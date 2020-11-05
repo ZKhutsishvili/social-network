@@ -32,7 +32,10 @@
 		.greeting{
 			text-align: center;
 		}
-		input{
+		label{
+			color: white;
+		}
+		input, button{
 			margin-top: 5px;
 			margin-bottom: 5px;
 		}
@@ -43,9 +46,6 @@
 			display: flex;
 			flex-direction: column;
 			border: 2px solid black;
-		}
-		form{
-			width: 100%;
 		}
 	</style>
 </head>
@@ -60,10 +60,10 @@
 		<div class="log">
 			<form method="GET" name="data">
 				<input type="text" name="email" placeholder="Email">
-				<input type="password" name="password" placeholder="Password"><br>
-				<button type="submit">Login</button>
-			</form>
-			<form method="POST" action="register.html">
+				<input type="text" name="firstname" placeholder="Firstname">
+				<input type="text" name="lastname" placeholder="Lastname">
+				<input type="password" name="password" placeholder="Password">
+				<input type="password" name="repassword" placeholder="Confirm Password"><br>
 				<button type="submit">Register</button>
 			</form>
 		</div>
