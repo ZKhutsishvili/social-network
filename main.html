@@ -1,66 +1,9 @@
 <html>
 <head>
-	<style>
-		body{
-			margin: 0;
-			padding: 0; 
-		}
-		.container{
-			overflow: auto;
-			display: flex;
-			flex-direction: column;
-			height: 100%;
-			width: 100%;
-		}
-		.header{
-			background-color: 617073;
-			height: 15%;
-			width: 100%;
-		}
-		.main{
-			background-color: AFB3F7;
-			height: 80%;
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-		}
-		.footer{
-			background-color: 617073;
-			height: 5%;
-			width: 100%;
-			text-align: center;
-			color: 171a21;
-		}
-		.greeting{
-			text-align: center;
-			color: 171a21;
-		}
-		.left{
-			width: 15%;
-			height: 100%;
-			background-color: 7a93ac;
-			flex-direction: column;
-		}
-		.right{
-			width: 15%;
-			height: 100%;
-			background-color: 7a93ac;
-		}
-		.middle{
-			width: 70%;
-			height: 100%;
-		}
-		.left-items{
-			line-height: 3em;
-			color:white;
-			text-decoration: none;
-		}
-		.left-items:hover{
-			color:white;
-			background-color: 92bcea;
-			display: block;
-		}
-	</style>
+	<link type="text/css" rel="stylesheet" href="basics.css">
+	<link type="text/css" rel="stylesheet" href="news_feed.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="news_feed.js"></script>
 </head>
 <body>
 <div class="container">
@@ -69,7 +12,7 @@
 			News Feed
 		</h2>
 	</div>
-	<div class="main">
+	<div class="main-container">
 		<div class="left">
 			<a class="left-items" href="">
 				Your Profile<br>
@@ -88,8 +31,24 @@
 			</a>
 		</div>
 		<div class="middle">
+				<script>getPosts()</script>
 		</div>
 		<div class="right">
+			<a class="right-items" href="">
+				Friend 1<br>
+			</a>
+			<a class="right-items" href="">
+				Friend 2<br>
+			</a>
+			<a class="right-items" href="">
+				Friend 3<br>
+			</a>
+			<a class="right-items" href="">
+				Friend 4<br>
+			</a>
+			<a class="right-items" href="">
+				Friend 5<br>
+			</a>
 		</div>
 	</div>
 	<div class="footer">

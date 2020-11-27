@@ -13,12 +13,15 @@ body{
 	background-color: 617073;
 	height: 15%;
 	width: 100%;
+	position: fixed;
 }
 .main{
 	background-color: AFB3F7;
 	height: 80%;
 	width: 100%;
 	text-align: center;
+	position: fixed;
+	top: 15%;
 }
 .footer{
 	background-color: 617073;
@@ -26,6 +29,8 @@ body{
 	width: 100%;
 	text-align: center;
 	color: 171a21;
+	position: fixed;
+	bottom: 0;
 }
 .greeting{
 	text-align: center;
