@@ -13,22 +13,19 @@
 	height: 100%;
 	background-color: 7a93ac;
 	flex-direction: column;
-	position: fixed;
 	left: 0;
 }
 .right{
 	width: 20%;
 	height: 100%;
 	background-color: 7a93ac;
-	position: fixed;
 	right: 0;
 }
 .middle{
 	width: 60%;
 	height: 100%;
-	left: 20%;
-	position: fixed;
 	overflow-y: scroll;
+	overflow: auto;
 }
 .left-items{
 	flex-direction: column;
