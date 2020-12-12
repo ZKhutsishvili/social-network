@@ -2,18 +2,14 @@
 <head>
 	<link type="text/css" rel="stylesheet" href="basics.css">
 	<script type="text/javascript">
+		function registerVisible(){
+			var log = document.getElementsByClassName("log")[0];
+			log.style.display = 'none';
+			var register = document.getElementsByClassName("register")[0];
+			register.style.display = 'flex';
+		}
 		function register(){
-			var logButton = document.getElementById("login");
-			var buttonStyle = window.getComputedStyle(logButton);
-			if(buttonStyle.display === "none"){
-				window.location.href = "./main.html";
-			}else{
-				var info = document.getElementsByClassName("register-field");
-				for (var i = 0; i < info.length; i++) {
-					info[i].style.display = "inline";
-				}
-				logButton.style.display = "none"
-			}
+
 		}
 	</script>
 </head>
@@ -26,14 +22,21 @@
 	</div>
 	<div class="main">
 		<div class="log">
-			<form method="GET" name="data" action="main.html">
+			<form method="POST" name="data" action="main.html">
+				<input type="text" name="email" placeholder="Email">
+				<input type="password" name="password" placeholder="Password"><br>
+				<button type="submit" id="login">Login</button>
+			</form>
+				<button type="submit" id="register" onclick="registerVisible()">Register</button>
+		</div>
+		<div class="register">
+			<form method="POST" name="data" action="main.html">
 				<input type="text" name="email" placeholder="Email">
 				<input type="text" class="register-field" name="firstname" placeholder="Fullname">
 				<input type="password" name="password" placeholder="Password">
 				<input type="password" class="register-field" name="repassword" placeholder="Confirm Password"><br>
-				<button type="submit" id="login">Login</button>
-			</form>
 				<button type="submit" id="register" onclick="register()">Register</button>
+			</form>
 		</div>
 	</div>
 	<div class="footer">

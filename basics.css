@@ -43,7 +43,7 @@ input, button{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-.log{
+.log, .register{
 	margin: auto;
 	margin-top: 100px;
 	width: 190px;
@@ -51,11 +51,11 @@ input, button{
 	flex-direction: column;
 	border: 2px solid black;
 }
+.register{
+	display: none;
+}
 form{
 	width: 100%;
-}
-.register-field{
-	display: none;
 }
 #register{
 	width: 50%;
