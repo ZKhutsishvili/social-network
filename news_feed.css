@@ -32,9 +32,14 @@
 	display: none;
 }
 .left-items{
-	flex-direction: column;
 	line-height: 3em;
 	color:white;
+	display: block;
+	text-decoration: none;
+}
+a{
+	color:white;
+	display: block;
 	text-decoration: none;
 }
 .right-items{
@@ -46,11 +51,13 @@
 .left-items:hover{
 	color:white;
 	background-color: 92bcea;
+	border-radius: 10px;
 	display: block;
 }
-.right-items:hover{
+.chathead:hover{
 	color:white;
 	background-color: 92bcea;
+	border-radius: 10px;
 	display: block;
 }
 .post{
@@ -78,4 +85,9 @@
 }
 .fullname{
 	margin-left: 5px;
+	font-weight: bold;
+}
+.date{
+	font-weight: normal;
+	font-size: small;
 }
