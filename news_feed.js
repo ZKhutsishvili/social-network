@@ -24,10 +24,19 @@ async function getPictures(){
 
 }
 
+async function getComments(){
+    let response = await fetch("https://jsonplaceholder.typicode.com/comments");
+	if(response.ok){
+		let json = await response.json();
+		return json;
+	}
+}
+
 async function addPosts(posts, users){
 	var users = await getUsers();
 	var posts = await getPosts();
 	var pics = await getPictures();
+	var comments = await getComments();	
 	var feed = document.getElementsByClassName("middle");
 	var res = "";
 	for (var i = posts.length - 1; i >= 0; i--) {
@@ -42,6 +51,15 @@ async function addPosts(posts, users){
 		res += "<br><span class='date'>" + time + "</span></div></div>";
 		res += "<div class='post-title'>" + posts[i].title + "</div>";
 		res += "<img src='https://picsum.photos/400/200?random=" + i + "' class='post-pic' alt='" + pics[i].title + "'>";
+		res += "<div class='comments-container'>";
+		var currComments = getRandom(comments, Math.floor(Math.random() * 5));
+		for (var j = 0; j < currComments.length; j++) {
+			res += "<div class=comment-container>";
+			res += "<div class='post-user'> <img src='https://picsum.photos/300/200?random=" + j+"'alt='profile picture' class='prof-pic'>";
+			res += "<div class='fullname'>"+users[j%10].name+ "</div></div>"
+			res += "<div class='comment'>" + currComments[j].body+"</div></div>";
+		}
+		res += "</div>"
 		res += "</div>";
 	}
 	feed[0].innerHTML = res;
@@ -59,4 +77,16 @@ async function addChatheads(posts, users){
 		res += "</div>";
 	}
 	chatheads[0].innerHTML = res;
+}
+
+function getRandom(arr, n) {
+    var result = new Array(n),
+        len = arr.length,
+        taken = new Array(len);
+    while (n--) {
+        var x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
 }

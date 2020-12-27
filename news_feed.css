@@ -61,7 +61,7 @@ a{
 	display: block;
 }
 .post{
-	margin: 5px 10% 5px 10%;
+	margin: 15px 10% 15px 10%;
 	width: 80%;
 	border-radius: 10px;
 	background-color: AFB3F7;
@@ -73,7 +73,7 @@ a{
 .post-title{
 	margin-left: 5%;
 }
-.post-user{
+.post-user, .comment-user{
 	padding-top: 5%;
 	margin-left: 5%;
 	display: flex;
@@ -90,4 +90,14 @@ a{
 .date{
 	font-weight: normal;
 	font-size: small;
+}
+.comment-container{
+	display: inline-block;
+	border-radius: 30px;
+	background-color: #bbb;
+	margin:5px;
+}
+.comment{
+	font-size: small;
+	margin: 10px;
 }
