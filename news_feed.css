@@ -18,6 +18,7 @@
 	width: 20%;
 	height: 100%;
 	right: 0;
+	overflow: auto;
 }
 .round{
 	border: 5px solid #bbb;
@@ -28,7 +29,7 @@
 	height: 100%;
 	overflow: auto;
 }
-.middle::-webkit-scrollbar{
+.middle::-webkit-scrollbar, .right::-webkit-scrollbar{
 	display: none;
 }
 .left-items{
@@ -100,4 +101,51 @@ a{
 .comment{
 	font-size: small;
 	margin: 10px;
+}
+.like-com{
+	display: flex;
+	flex-direction: row;
+	flex-grow: 2;
+}
+.like, .com{
+	width: 50%;
+	text-align: center;
+}
+.like:hover, .com:hover{
+	border-radius: 10px;
+	background-color: #bbb;
+}
+.counts{
+	display: flex;
+	flex-direction: row;
+}
+.like-count{
+	width: 50%;
+	text-align: left;
+}
+.com-count{
+	width: 50%;
+	text-align: right;
+}
+.com-field{
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border-radius: 30px;
+	background-color: #bbb;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
 }
