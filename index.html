@@ -1,5 +1,6 @@
 <html>
 <head>
+	<title>Login Page</title>
 	<link type="text/css" rel="stylesheet" href="basics.css">
 	<script type="text/javascript">
 		function registerVisible(){
@@ -22,7 +23,7 @@
 	</div>
 	<div class="main">
 		<div class="log">
-			<form method="POST" name="data" action="main.html">
+			<form method="GET" name="data" action="main.html">
 				<input type="text" name="email" placeholder="Email">
 				<input type="password" name="password" placeholder="Password"><br>
 				<button type="submit" id="login">Login</button>
@@ -30,7 +31,7 @@
 				<button type="submit" id="register" onclick="registerVisible()">Register</button>
 		</div>
 		<div class="register">
-			<form method="POST" name="data" action="main.html">
+			<form method="GET" name="data" action="main.html">
 				<input type="text" name="email" placeholder="Email">
 				<input type="text" class="register-field" name="firstname" placeholder="Fullname">
 				<input type="password" name="password" placeholder="Password">
@@ -42,6 +43,7 @@
 	<div class="footer">
 			Copyright. All rights reserved
 	</div>
+	
 </div>
 </body>
 </html>
