@@ -100,7 +100,7 @@ function addComment(index){
 	count.innerHTML = parseInt(count.innerHTML.split(" ")[0])+1+" Comments";
 }
 
-async function addChatheads(posts, users){
+async function addChatheads(){
 	var users = await getUsers();
 	var pics = await getPictures();
 	var chatheads = document.getElementsByClassName("right");
@@ -115,11 +115,33 @@ async function addChatheads(posts, users){
 }
 
 function openChat(fullname){
-	var main = document.getElementsByClassName("container")[0];
-	var res = "<div class='chat-container'><div class='fullname' onclick='closeChat()'>"+fullname+"</div><div class='chat'></div><div class=chat-text><input id='chat-txt' type='text' placeholder='Write a message'></div></div>"
-	main.innerHTML += res;
+	var main = document.getElementById(fullname);
+	main.style.display = "block";
 }
-function closeChat(){
+
+function sendMessage(index){
+	var chat = document.getElementsByClassName("chat-container")[index].getElementsByClassName("chat")[0];
+	chat.innerHTML += "<div><div class=sent-text>"+document.forms["chat-data-"+index]["message"].value+"</div></div>";
+	chat.scrollTop = chat.scrollHeight;
+	var myVar = setTimeout(() => {chat.innerHTML += "<div><div class=received-text>Random Text</div></div>"; chat.scrollTop = chat.scrollHeight;}, 1000);
+	document.forms["chat-data-"+index]["message"].value = "";
+}
+
+async function createChats(){
+	var users = await getUsers();
+	var main = document.getElementsByClassName("chat-wrapper")[0];
+	var res = "";
+	for (var i = 0; i < users.length; i++) {
+		var curr = "<div class='chat-container' id='"+users[i].name+"'><div class='fullname' onclick='closeChats()'>"+users[i].name
+		+`</div><div class='chat'></div><div class=chat-text><form id="chat-form-"` + i + ` method="POST" name="chat-data-`+i+`" onsubmit="sendMessage(`+i+`); return false">
+		<input id='chat-txt' name='message' type='text' placeholder='Write a message'></form></div></div>`;
+		res += curr;
+	}
+	main.innerHTML = res;
+	closeChats();
+}
+
+function closeChats(){
 	var chats = document.getElementsByClassName("chat-container");
 	for (var i = chats.length - 1; i >= 0; i--) {
 		chats[i].style.display = "none";
