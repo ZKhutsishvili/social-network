@@ -1,5 +1,5 @@
 var likes = [];
-
+var postIndex = 100;
 async function getPosts(){
 	let response = await fetch("https://jsonplaceholder.typicode.com/posts");
 	if(response.ok){
@@ -39,7 +39,7 @@ async function addPosts(posts, users){
 	var posts = await getPosts();
 	var pics = await getPictures();
 	var comments = await getComments();	
-	var feed = document.getElementsByClassName("middle");
+	var feed = document.getElementsByClassName("posts-container");
 	var res = "";
 	for (var i = posts.length - 1; i >= 0; i--) {
 		res += "<div class='post' id='post-"+i+"'>"
@@ -55,7 +55,7 @@ async function addPosts(posts, users){
 		res += "<img src='https://picsum.photos/400/200?random=" + i + "' class='post-pic' alt='" + pics[i].title + "'>";
 		var currComments = getRandom(comments, Math.floor(Math.random() * 5));
 		res += "<div class='counts'><div class='like-count'>" + Math.round(Math.random()*100) +" Likes</div><div class='com-count'>" + currComments.length+" Comments</div></div>";
-		res += "<hr> <div class='like-com'> <div class='like' onclick='addLike("+i+")'>Like</div><div class='com'><a style='color:black;' href='#com-"+i+"'>Comment</a></div> </div> <hr>"; 
+		res += "<hr> <div class='like-com'> <div class='like' onclick='addLike("+i+")'>Like</div><div class='com' onclick='scrollCom("+i+")'>Comment</div> </div> <hr>"; 
 		res += "<div class='comments-container' id='comments-container-"+i+"'>";
 		for (var j = 0; j < currComments.length; j++) {
 			res += "<div class=comment-container>";
@@ -71,6 +71,47 @@ async function addPosts(posts, users){
 	}
 	feed[0].innerHTML = res;
 
+}
+function createPost(){
+	var text = document.forms["post-data"]["text"].value;
+	var image = document.forms["post-data"]["image"].value;
+	document.forms["post-data"]["text"].value = "";
+	document.forms["post-data"]["image"].value = "";
+	if(image == "" && text == ""){
+		return;
+	}
+	var posts = document.getElementsByClassName("posts-container")[0];
+	var res = "<div class='post' id='post-"+postIndex+"'>";
+	res += "<div class='post-user'> <img src='http://newsbote.com/wp-content/uploads/2011/04/wolverine-origins-jackman-300x200.jpg' alt='profile picture' class='prof-pic'>";
+	res += "<div class='fullname'>Zura Khutsishvili";
+	var hour = new Date().getHours();
+	var minute = new Date().getMinutes();
+	var time = hour < 10 ? "0" + hour : hour;
+	time += ":";
+	time += minute < 10 ? "0" + minute : minute;
+	res += "<br><span class='date'>" + time + "</span></div></div>";
+	res += "<div class='post-title'>" + text + "</div>";
+	if (image != ""){
+		res += "<img src='" + image + "' class='post-pic' alt='" + text + "'>";
+	}
+	res += "<div class='counts'><div class='like-count'>0 Likes</div><div class='com-count'>0 Comments</div></div>";
+	res += "<hr> <div class='like-com'> <div class='like' onclick='addLike("+postIndex+")'>Like</div><div class='com' onclick='scrollCom("+postIndex+")'>Comment</div> </div> <hr>"; 
+	res += "<div class='comments-container' id='comments-container-"+postIndex+"'>";
+	res += "</div>";
+	res += `<form id="form_`+postIndex+`" method="POST" name="data`+postIndex+`" onsubmit="addComment(`+postIndex+`); return false">
+		<input type="text" id="com-`+postIndex+`"class="com-field" name="comment" placeholder="Write a comment">
+			</form>`;
+	res += "</div>";
+	posts.innerHTML = res + posts.innerHTML;
+	postIndex++;
+}
+
+function scrollCom(index){
+	var a = document.getElementById("com-"+index);
+	// a.style.behavior = 'smooth';
+	a.focus();
+	a.scrollTop = a.scrollHeight;
+	// window.scrollTo({top: a.scrollHeight, behavior: 'smooth'});
 }
 
 function addLike(index){
@@ -90,6 +131,8 @@ function addLike(index){
 function addComment(index){
 	var comments = document.getElementById("comments-container-"+index);
 	var res = "";
+	if(document.forms["data"+index]["comment"].value == "") 
+		return;
 	res += "<div class=comment-container>";
 	res += "<div class='post-user'> <img src='http://newsbote.com/wp-content/uploads/2011/04/wolverine-origins-jackman-300x200.jpg'alt='profile picture' class='prof-pic'>";
 	res += "<div class='fullname'>"+"Zura Khutsishvili"+ "</div></div>"
@@ -115,11 +158,14 @@ async function addChatheads(){
 }
 
 function openChat(fullname){
+	closeChats();
 	var main = document.getElementById(fullname);
 	main.style.display = "block";
 }
 
 function sendMessage(index){
+	if(document.forms["chat-data-"+index]["message"].value == "") 
+		return;
 	var chat = document.getElementsByClassName("chat-container")[index].getElementsByClassName("chat")[0];
 	chat.innerHTML += "<div><div class=sent-text>"+document.forms["chat-data-"+index]["message"].value+"</div></div>";
 	chat.scrollTop = chat.scrollHeight;

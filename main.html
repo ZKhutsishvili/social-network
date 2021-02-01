@@ -5,6 +5,7 @@
 	<link type="text/css" rel="stylesheet" href="news_feed.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="news_feed.js"></script>
+	<script>addPosts(); addChatheads(); createChats();</script>
 </head>
 <body>
 <div class="container">
@@ -43,14 +44,20 @@
 		</div>
 		<hr class="round">
 		<div class="middle">
-			<script>addPosts()</script>
+			<div class='create-post'>
+				<form id="create-form" method="POST" name="post-data" onsubmit="createPost(); return false">
+					<input type="text" id="post-text" class="com-field" name="text" placeholder="What's on your mind?">
+					<input type="text" id="img-text" class="com-field" name="image" placeholder="Place link of image here...">
+					<button type="submit" id="post-button">Add Post</button>
+				</form>
+			</div>
+			<div class='posts-container'>
+			</div>
 		</div>
 		<hr class="round">
 		<div class="right">
-			<script>addChatheads()</script>
 		</div>
 		<div class="chat-wrapper">
-			<script>createChats();</script>
 		</div>
 	</div>
 	<div class="footer">
