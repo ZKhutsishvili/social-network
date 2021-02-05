@@ -1,3 +1,7 @@
+.container{
+	display: flex;
+	flex-direction: column;
+}
 .main-container{
 	background-color: rgb(190 205 255);
 	height: 90%;
@@ -230,6 +234,9 @@ html{
 	width: 20%;
 	padding: 0px;
 	background-color: rgb(224 224 224);
+}
+.greeting{
+	height: 5%
 }
 ::-webkit-scrollbar {
   width: 10px;
