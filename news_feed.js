@@ -1,5 +1,15 @@
 var likes = [];
 var postIndex = 100;
+var username = "Zura Khutsishvili";
+function getName(){
+	var username2 = document.forms["register-data"]["fullname"].value;
+	if(username1 == ""){
+		if(username2 != "")
+			username = username2;
+	}else{
+		username = username1;
+	}
+}
 async function getPosts(){
 	let response = await fetch("https://jsonplaceholder.typicode.com/posts");
 	if(response.ok){
@@ -70,8 +80,8 @@ async function addPosts(posts, users){
 		res += "</div>";
 	}
 	feed[0].innerHTML = res;
-
 }
+
 function createPost(){
 	var text = document.forms["post-data"]["text"].value;
 	var image = document.forms["post-data"]["image"].value;
@@ -83,7 +93,7 @@ function createPost(){
 	var posts = document.getElementsByClassName("posts-container")[0];
 	var res = "<div class='post' id='post-"+postIndex+"'>";
 	res += "<div class='post-user'> <img src='http://newsbote.com/wp-content/uploads/2011/04/wolverine-origins-jackman-300x200.jpg' alt='profile picture' class='prof-pic'>";
-	res += "<div class='fullname'>Zura Khutsishvili";
+	res += "<div class='fullname'>"+username;
 	var hour = new Date().getHours();
 	var minute = new Date().getMinutes();
 	var time = hour < 10 ? "0" + hour : hour;
@@ -135,7 +145,7 @@ function addComment(index){
 		return;
 	res += "<div class=comment-container>";
 	res += "<div class='post-user'> <img src='http://newsbote.com/wp-content/uploads/2011/04/wolverine-origins-jackman-300x200.jpg'alt='profile picture' class='prof-pic'>";
-	res += "<div class='fullname'>"+"Zura Khutsishvili"+ "</div></div>"
+	res += "<div class='fullname'>"+username+ "</div></div>"
 	res += "<div class='comment'>" + document.forms["data"+index]["comment"].value+"</div></div>";	
 	comments.innerHTML += res; 
 	document.forms["data"+index]["comment"].value = "";

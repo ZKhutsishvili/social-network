@@ -34,37 +34,37 @@ body{
 label{
 	color: white;
 }
-input, button{
-	margin: 5%;
-	padding: 5%;
-	background-color: snow;
-	border-radius: 10px;
-}
 input{	
 	width: 90%;
+	margin: 2% 5% 2% 5%;
 }
 button{
 	cursor: pointer;
+	width: 50%;
+	margin: 2% 25% 2% 25%;		
 }
-.log, .register{
-	margin: auto;
-	margin-top: 100px;
+input, button{
+	margin-top: 10%;
+	background-color: snow;
+	border-radius: 30px;
+	height: 10%;
+	padding: 3%;
+}
+.login, .register{
+	margin-top: 5%;
+	margin-left: 40%;
 	width: 20%;
 	display: flex;
 	flex-direction: column;
 	background-color: AFB3F7;
 	border-radius: 30px;
+	position: fixed;
 }
 .register{
 	display: none;
 }
 form{
 	width: 100%;
-}
-#register{
-	width: 50%;
-	margin: auto;
-	margin-bottom: 5%;
 }
 
 @media only screen and (max-width: 900px) {
@@ -79,8 +79,23 @@ form{
 	}
 	.main{
 		height: 100%;
+		width: 100%;
 	}
-	.log, .register{
-		width: 50%;
+	.login, .register{
+		width: 70%;
+		margin-left: 15%;
+		height: 80%;
+		bottom: 5%;
 	}
+	.register{
+		height: 60%;
+	}
+	.login{
+		height: 60%;
+	}
+	button, input{
+		margin-top:4%;
+		padding:3%;
+	}
+
 }
