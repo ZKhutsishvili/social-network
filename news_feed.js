@@ -81,6 +81,14 @@ async function addPosts(posts, users){
 	}
 	feed[0].innerHTML = res;
 }
+var disp = 0;
+function displayItems(){
+	var arr = document.getElementsByClassName("left-items");
+	for (var i = 0; i < arr.length; i++) {
+		arr[i].style.display = disp == 1 ? "none" : "block";
+	}
+	disp == 1 ? disp-- : disp++;
+}
 
 function createPost(){
 	var text = document.forms["post-data"]["text"].value;
